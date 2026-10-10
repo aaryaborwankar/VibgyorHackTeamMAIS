@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="author" content="LawMate.AI" />
+        <title>LawMate.AI</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Core theme CSS (uses Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+    </head>
+    <body class="d-flex flex-column h-100 bg-light">
+        <main class="flex-shrink-0">
+            <!-- Navigation-->
+            <nav class="navbar navbar-expand-lg navbar-dark bg-black shadow-sm">
+                <div class="container px-4 px-lg-5">
+                    <a class="navbar-brand fw-bold" href="index.html">
+                        <i class="bi bi-file-earmark-lock2 text-primary me-2"></i>LawMate.AI
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                            <li class="nav-item"><a class="nav-link" href="index.html">Scanner</a></li>
+                            <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                            <li class="nav-item"><a class="nav-link active" href="contact.html">Contact</a></li>
+                            <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Page content-->
+            <section class="py-5">
+                <div class="container px-4 px-lg-5">
+                    <!-- Contact form card-->
+                    <div class="bg-white shadow-sm rounded-4 py-5 px-4 px-md-5 mb-5">
+                        <div class="text-center mb-5">
+                            <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3">
+                                <i class="bi bi-envelope-paper"></i>
+                            </div>
+                            <h1 class="fw-bolder">Get in Touch</h1>
+                            <p class="lead fw-normal text-muted mb-0">Any questions about our software or any feedback?</p>
+                        </div>
+                        <div class="row gx-5 justify-content-center">
+                            <div class="col-lg-8 col-xl-6">
+                                <form id="contactForm">
+                                    <!-- Name input-->
+                                    <div class="form-floating mb-3">
+                                        <input class="form-control" id="name" type="text" placeholder="Enter your name..." required />
+                                        <label for="name">Full name</label>
+                                        <div class="invalid-feedback">A name is required.</div>
+                                    </div>
+
+                                    <!-- Email address input-->
+                                    <div class="form-floating mb-3">
+                                        <input class="form-control" id="email" type="email" placeholder="name@example.com" required />
+                                        <label for="email">Email address</label>
+                                        <div class="invalid-feedback">Please enter a valid email address.</div>
+                                    </div>
+
+                                    <!-- Subject/Inquiry Category -->
+                                    <div class="form-floating mb-3">
+                                        <select class="form-select" id="subject" aria-label="Inquiry Type">
+                                            <option value="General Inquiry" selected>General Question</option>
+                                            <option value="Technical Support">Technical &amp; Document Parsing Issue</option>
+                                            <option value="Enterprise / API">Custom Enterprise &amp; Supabase Integration</option>
+                                            <option value="Feedback">Model Accuracy &amp; Translation Feedback</option>
+                                        </select>
+                                        <label for="subject">Topic</label>
+                                    </div>
+
+                                    <!-- Message input-->
+                                    <div class="form-floating mb-3">
+                                        <textarea class="form-control" id="message" placeholder="Enter your message here..." style="height: 10rem" required></textarea>
+                                        <label for="message">Message</label>
+                                        <div class="invalid-feedback">A message is required.</div>
+                                    </div>
+
+                                    <!-- Success Feedback Banner-->
+                                    <div class="alert alert-success d-none mb-3" id="submitSuccessMessage" role="alert">
+                                        <div class="d-flex align-items-center">
+                                            <i class="bi bi-check-circle-fill fs-4 me-2"></i>
+                                            <div>
+                                                <strong>Message transmitted successfully!</strong>
+                                                <div>We'll get back to you as soon as possible!</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Error Feedback Banner-->
+                                    <div class="alert alert-danger d-none mb-3" id="submitErrorMessage" role="alert">
+                                        <div class="d-flex align-items-center">
+                                            <i class="bi bi-exclamation-triangle-fill fs-4 me-2"></i>
+                                            <div>
+                                                <strong>Error - Message could not be sent</strong>
+                                                <div id="errorDetails">Check your connection and try again.</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Submit Button-->
+                                    <div class="d-grid">
+                                        <button class="btn btn-primary btn-lg fw-semibold" id="submitButton" type="submit">
+                                            <i class="bi bi-send me-1"></i> Send Message
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- NEW: Social Media & Community Channels Section -->
+                    <div class="bg-black text-white shadow-sm rounded-4 py-5 px-4 px-md-5 mb-5">
+                        <div class="row align-items-center justify-content-between g-4">
+                            <div class="col-lg-5 text-center text-lg-start">
+                                <span class="badge bg-primary text-dark fw-bold px-3 py-2 rounded-pill mb-2">Connect &amp; Follow</span>
+                                <h2 class="fw-bolder mb-2">Join our Community</h2>
+                                <p class="text-white-50 mb-0">Follow the latest updates on our socials!</p>
+                            </div>
+                            <div class="col-lg-7">
+                                <div class="row g-3 justify-content-center justify-content-lg-end">
+                                    <!-- X / Twitter -->
+                                    <div class="col-6 col-sm-4">
+                                        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noopener noreferrer" class="btn btn-outline-light w-100 py-3 rounded-3 d-flex flex-column align-items-center text-decoration-none">
+                                            <i class="bi bi-twitter-x fs-3 mb-1 text-primary"></i>
+                                            <span class="small fw-semibold">X (Twitter)</span>
+                                        </a>
+                                    </div>
+                                    <!-- LinkedIn -->
+                                    <div class="col-6 col-sm-4">
+                                        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noopener noreferrer" class="btn btn-outline-light w-100 py-3 rounded-3 d-flex flex-column align-items-center text-decoration-none">
+                                            <i class="bi bi-linkedin fs-3 mb-1 text-primary"></i>
+                                            <span class="small fw-semibold">LinkedIn</span>
+                                        </a>
+                                    </div>
+                                    <!-- GitHub -->
+                                    <div class="col-6 col-sm-4">
+                                        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noopener noreferrer" class="btn btn-outline-light w-100 py-3 rounded-3 d-flex flex-column align-items-center text-decoration-none">
+                                            <i class="bi bi-github fs-3 mb-1 text-primary"></i>
+                                            <span class="small fw-semibold">GitHub</span>
+                                        </a>
+                                    </div>
+                                    <!-- Discord Community -->
+                                    <div class="col-6 col-sm-4">
+                                        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noopener noreferrer" class="btn btn-outline-light w-100 py-3 rounded-3 d-flex flex-column align-items-center text-decoration-none">
+                                            <i class="bi bi-discord fs-3 mb-1 text-primary"></i>
+                                            <span class="small fw-semibold">Discord</span>
+                                        </a>
+                                    </div>
+                                    <!-- YouTube -->
+                                    <div class="col-6 col-sm-4">
+                                        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noopener noreferrer" class="btn btn-outline-light w-100 py-3 rounded-3 d-flex flex-column align-items-center text-decoration-none">
+                                            <i class="bi bi-youtube fs-3 mb-1 text-primary"></i>
+                                            <span class="small fw-semibold">YouTube</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact highlight cards-->
+                    <div class="row gx-4 gy-4 row-cols-1 row-cols-md-2 row-cols-lg-4 py-3">
+                        <div class="col">
+                            <div class="card h-100 border-0 shadow-sm p-4 rounded-3 text-center">
+                                <div class="feature bg-primary bg-gradient text-white rounded-3 mx-auto mb-3">
+                                    <i class="bi bi-shield-lock"></i>
+                                </div>
+                                <div class="h5 fw-bold mb-2">Privacy &amp; Security</div>
+                                <p class="text-muted small mb-0">Your files are stored securely on a supabase database.</p>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card h-100 border-0 shadow-sm p-4 rounded-3 text-center">
+                                <div class="feature bg-primary bg-gradient text-white rounded-3 mx-auto mb-3">
+                                    <i class="bi bi-translate"></i>
+                                </div>
+                                <div class="h5 fw-bold mb-2">Multilingual Support</div>
+                                <p class="text-muted small mb-0">This website supports multiple languages to help you understand legal documents.</p>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card h-100 border-0 shadow-sm p-4 rounded-3 text-center">
+                                <div class="feature bg-primary bg-gradient text-white rounded-3 mx-auto mb-3">
+                                    <i class="bi bi-question-diamond"></i>
+                                </div>
+                                <div class="h5 fw-bold mb-2">Knowledge Base</div>
+                                <p class="text-muted small mb-0">Browse through legal analysis methodologies, risk rubrics, and platform FAQs.</p>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card h-100 border-0 shadow-sm p-4 rounded-3 text-center">
+                                <div class="feature bg-primary bg-gradient text-white rounded-3 mx-auto mb-3">
+                                    <i class="bi bi-envelope-at"></i>
+                                </div>
+                                <div class="h5 fw-bold mb-2">Direct Email</div>
+                                <p class="text-muted small mb-0">Direct queries can be addressed to <a href="mailto:support@lawmate.ai" class="text-primary text-decoration-none">support@lawmate.ai</a>.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
+        <!-- Form Submission Handler (Supabase ready) -->
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                const contactForm = document.getElementById("contactForm");
+                const submitButton = document.getElementById("submitButton");
+                const successMsg = document.getElementById("submitSuccessMessage");
+                const errorMsg = document.getElementById("submitErrorMessage");
+                const errorDetails = document.getElementById("errorDetails");
+
+                contactForm.addEventListener("submit", async (e) => {
+                    e.preventDefault();
+                    
+                    submitButton.disabled = true;
+                    submitButton.innerHTML = `<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Sending...`;
+                    successMsg.classList.add("d-none");
+                    errorMsg.classList.add("d-none");
+
+                    const payload = {
+                        name: document.getElementById("name").value.trim(),
+                        email: document.getElementById("email").value.trim(),
+                        subject: document.getElementById("subject").value,
+                        message: document.getElementById("message").value.trim(),
+                        created_at: new Date().toISOString()
+                    };
+
+                    try {
+                        // Simulating network delay / Supabase insert
+                        await new Promise((resolve) => setTimeout(resolve, 800));
+
+                        successMsg.classList.remove("d-none");
+                        contactForm.reset();
+                    } catch (err) {
+                        console.error("Submission failed:", err);
+                        errorDetails.innerText = err.message || "Could not save message.";
+                        errorMsg.classList.remove("d-none");
+                    } finally {
+                        submitButton.disabled = false;
+                        submitButton.innerHTML = `<i class="bi bi-send me-1"></i> Send Message`;
+                    }
+                });
+            });
+        </script>
+    </body>
+</html>
