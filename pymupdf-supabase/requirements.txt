@@ -1,7 +1,0 @@
-﻿fastapi
-uvicorn[standard]
-python-multipart
-pymupdf
-google-genai
-supabase
-python-dotenv
