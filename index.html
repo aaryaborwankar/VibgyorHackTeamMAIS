@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="Legal Document Scanner and Analyser" />
+        <title>LawMate.AI</title>
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet" />
+        <link href="css/styles.css" rel="stylesheet" />
+    </head>
+    <body class="d-flex flex-column h-100 bg-light">
+        <main class="flex-shrink-0">
+            <!-- Navigation-->
+            <nav class="navbar navbar-expand-lg navbar-dark bg-black shadow-sm">
+                <div class="container px-4 px-lg-5">
+                    <a class="navbar-brand fw-bold" href="index.html">
+                        <i class="bi bi-file-earmark-lock2 text-primary me-2"></i>LawMate.AI
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                            <li class="nav-item"><a class="nav-link active" href="index.html">Scanner</a></li>
+                            <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                            <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Header-->
+            <header class="bg-black py-5 text-white">
+                <div class="container px-4 px-lg-5">
+                    <div class="row gx-5 align-items-center justify-content-center">
+                        <div class="col-lg-8 text-center">
+                            <span class="badge bg-primary px-3 py-2 rounded-pill mb-3 text-dark fw-bold">Nemotron Multimodal Engine</span>
+                            <h1 class="display-5 fw-bolder mb-3">Scan Documents and Analyze Them in Seconds</h1>
+                            <p class="lead text-white-50 mb-4">Upload a PDF or use your camera to snap a photo of any legal agreement. Nemotron detects the hidden risks and generates simple summaries.</p>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Scanner Workstation Section-->
+            <section class="py-5" id="scanner-section">
+                <div class="container px-4 px-lg-5">
+                    <div class="row g-4">
+                        <!-- Left Column: Input Form -->
+                        <div class="col-lg-5">
+                            <div class="card border-0 shadow-sm rounded-4 p-4 h-100">
+                                <h4 class="fw-bold mb-3"><i class="bi bi-cloud-arrow-up text-primary me-2"></i>Upload Document</h4>
+
+                                <form id="documentForm">
+                                    <!-- Language Picker -->
+                                    <div class="mb-3">
+                                        <label for="languageSelect" class="form-label fw-semibold">Target Output Language</label>
+                                        <select class="form-select" id="languageSelect">
+                                            <option value="en" selected>English</option>
+                                            <option value="hi">हिंदी (Hindi)</option>
+                                            <option value="fr">Français (French)</option>
+                                        </select>
+                                    </div>
+
+                                    <!-- Upload Options Tabs -->
+                                    <ul class="nav nav-pills nav-fill mb-3" id="inputTab" role="tablist">
+                                        <li class="nav-item" role="presentation">
+                                            <button class="nav-link active py-2" id="pdf-tab" data-bs-toggle="tab" data-bs-target="#pdf-tab-pane" type="button" role="tab">PDF Upload</button>
+                                        </li>
+                                        <li class="nav-item" role="presentation">
+                                            <button class="nav-link py-2" id="camera-tab" data-bs-toggle="tab" data-bs-target="#camera-tab-pane" type="button" role="tab">Camera Scan</button>
+                                        </li>
+                                    </ul>
+
+                                    <div class="tab-content" id="inputTabContent">
+                                        <!-- PDF Pane -->
+                                        <div class="tab-pane fade show active" id="pdf-tab-pane" role="tabpanel">
+                                            <div class="p-4 border border-2 border-dashed rounded-3 text-center mb-3">
+                                                <i class="bi bi-file-earmark-pdf fs-1 text-muted"></i>
+                                                <label class="form-label d-block mt-2 mb-1 fw-bold" for="fileInput">Choose a PDF or Image</label>
+                                                <input class="form-control" type="file" id="fileInput" accept="application/pdf,image/*" />
+                                                <div class="form-text">PDF, PNG, JPG up to 25MB</div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Camera Pane Made Using Gemini -->
+                                        <div class="tab-pane fade text-center" id="camera-tab-pane" role="tabpanel">
+                                            <video id="cameraStream" class="w-100 rounded-3 bg-dark mb-2 d-none" autoplay playsinline style="height: 200px; object-fit: cover;"></video>
+                                            <canvas id="cameraCanvas" class="d-none"></canvas>
+                                            <img id="capturedImage" class="img-fluid rounded-3 mb-2 d-none" style="max-height: 200px;" alt="Captured preview" />
+                                            <div class="d-flex gap-2 justify-content-center mb-3">
+                                                <button type="button" class="btn btn-sm btn-outline-dark" id="btnStartCamera">
+                                                    <i class="bi bi-camera me-1"></i>Open Camera
+                                                </button>
+                                                <button type="button" class="btn btn-sm btn-primary d-none" id="btnCapturePhoto">
+                                                    <i class="bi bi-record-circle me-1"></i>Snap Photo
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Submit Button -->
+                                    <button class="btn btn-primary w-100 py-2 fw-semibold" id="btnAnalyze" type="submit">
+                                        <i class="bi bi-lightning-charge me-1"></i>Analyze Document
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+
+                        <!-- Right Column: Results Dashboard -->
+                        <div class="col-lg-7">
+                            <div class="card border-0 shadow-sm rounded-4 p-4 h-100" id="resultsContainer">
+                                <h4 class="fw-bold mb-3"><i class="bi bi-shield-check text-primary me-2"></i>Analysis Dashboard</h4>
+
+                                <!-- Empty State -->
+                                <div id="emptyState" class="text-center my-auto py-5 text-muted">
+                                    <i class="bi bi-file-earmark-text fs-1 mb-2"></i>
+                                    <h5>No Document Analyzed Yet</h5>
+                                    <p class="small">Upload your pdf or capture a photo to begin.</p>
+                                </div>
+
+                                <!-- Loading Spinner -->
+                                <div id="loadingState" class="text-center my-auto py-5 d-none">
+                                    <div class="spinner-border text-primary mb-3" role="status"></div>
+                                    <h5 class="fw-bold">Processing Document...</h5>
+                                </div>
+
+                                <!-- Dynamic Report - Currently Hardcoded for a demonstration, need to setup with backend -->
+                                <div id="analysisContent" class="d-none">
+                                    <!-- Risk Score Alert -->
+                                    <div id="riskBanner" class="alert d-flex align-items-center mb-4 rounded-3" role="alert">
+                                        <i class="bi fs-3 me-3" id="riskIcon"></i>
+                                        <div>
+                                            <h6 class="alert-heading fw-bold mb-0" id="riskLevel">Risk Assessment: Low</h6>
+                                            <span class="small" id="riskSummaryText">Nemotron detected 0 high-liability clauses.</span>
+                                        </div>
+                                    </div>
+
+                                    <!-- Summary -->
+                                    <div class="mb-4">
+                                        <h5 class="fw-bold border-bottom pb-2">Executive Summary</h5>
+                                        <p id="summaryText" class="text-muted"></p>
+                                    </div>
+
+                                    <!-- Identified Risks -->
+                                    <div class="mb-4">
+                                        <h5 class="fw-bold border-bottom pb-2 text-danger">Identified Risks &amp; Liabilities</h5>
+                                        <ul class="list-group list-group-flush" id="risksList"></ul>
+                                    </div>
+
+                                    <!-- Key Clauses -->
+                                    <div>
+                                        <h5 class="fw-bold border-bottom pb-2">Extracted Key Clauses</h5>
+                                        <ul class="list-group list-group-flush" id="clausesList"></ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Bootstrap Bundle JS -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Application Logic -->
+        <script src="js/scripts.js"></script>
+    </body>
+</html>
